@@ -1,31 +1,30 @@
-const { entrypoints } = require("uxp");
+const { app } = require("photoshop");
 
-showAlert = () => {
-  alert("This is an alert message");
-};
+async function createTenLayers() {
+  const statusElement = document.getElementById("status");
+  statusElement.textContent = "レイヤーを作成中...";
 
-entrypoints.setup({
-  commands: {
-    showAlert,
-  },
-  panels: {
-    vanilla: {
-      show(node) {},
-    },
-  },
-});
+  try {
+    if (!app.activeDocument) {
+      statusElement.textContent = "エラー: ドキュメントが開かれていません。";
+      return;
+    }
 
-function showLayerNames() {
-  const app = require("photoshop").app;
-  const allLayers = app.activeDocument.layers;
-  const allLayerNames = allLayers.map((layer) => layer.name);
-  const sortedNames = allLayerNames.sort((a, b) =>
-    a < b ? -1 : a > b ? 1 : 0
-  );
-  document.getElementById("layers").innerHTML = `
-      <ul>${sortedNames.map((name) => `<li>${name}</li>`).join("")}</ul>`;
+    for (let i = 1; i <= 10; i++) {
+      const newLayer = app.activeDocument.artLayers.add();
+      newLayer.name = `レイヤー ${i}`;
+      statusElement.textContent = `レイヤー ${i}/10 を作成しました...`;
+    }
+
+    statusElement.textContent = "完了：10個のレイヤーを作成しました！";
+  } catch (e) {
+    console.error("レイヤーの作成中にエラーが発生しました:", e);
+    statusElement.textContent = `エラー: ${e.message}`;
+  }
 }
 
-document
-  .getElementById("btnPopulate")
-  .addEventListener("click", showLayerNames);
+window.onload = () => {
+  document
+    .getElementById("createLayerBtn")
+    .addEventListener("click", createTenLayers);
+};

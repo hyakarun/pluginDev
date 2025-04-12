@@ -1,106 +1,31 @@
 {
-  "id": "Test-yipuoi",
-  "name": "test",
+  "id": "com.example.createnewlayersimple",
+  "name": "10個のレイヤーを作成",
   "version": "1.0.0",
   "main": "index.html",
-  "host": [
-    {
-      "app": "PS",
-      "minVersion": "26.2.0"
-    }
-  ],
+  "host": {
+    "app": "PS",
+    "minVersion": "26.0.0"
+  },
   "manifestVersion": 5,
   "entrypoints": [
     {
-      "type": "command",
-      "id": "showAlert",
-      "label": "Show alert"
-    },
-    {
       "type": "panel",
-      "id": "vanilla",
+      "id": "createNewLayerPanelSimple",
+      "label": {
+        "default": "10個のレイヤーを作成",
+        "ja": "10個のレイヤーを作成",
+        "en": "Create 10 Layers"
+      },
       "minimumSize": {
-        "width": 230,
+        "width": 300,
         "height": 200
       },
-      "maximumSize": {
-        "width": 2000,
-        "height": 2000
-      },
-      "preferredDockedSize": {
-        "width": 230,
-        "height": 300
-      },
       "preferredFloatingSize": {
-        "width": 230,
-        "height": 300
-      },
-      "icons": [
-        {
-          "width": 32,
-          "height": 32,
-          "path": "icons/icon_D.png",
-          "scale": [
-            1,
-            2
-          ],
-          "theme": [
-            "dark",
-            "darkest"
-          ],
-          "species": [
-            "generic"
-          ]
-        },
-        {
-          "width": 32,
-          "height": 32,
-          "path": "icons/icon_N.png",
-          "scale": [
-            1,
-            2
-          ],
-          "theme": [
-            "lightest",
-            "light"
-          ],
-          "species": [
-            "generic"
-          ]
-        }
-      ],
-      "label": {
-        "default": "Starter Panel"
+        "width": 300,
+        "height": 200
       }
     }
   ],
-  "icons": [
-    {
-      "width": 23,
-      "height": 23,
-      "path": "icons/dark.png",
-      "scale": [
-        1,
-        2
-      ],
-      "theme": [
-        "darkest",
-        "dark",
-        "medium"
-      ]
-    },
-    {
-      "width": 23,
-      "height": 23,
-      "path": "icons/light.png",
-      "scale": [
-        1,
-        2
-      ],
-      "theme": [
-        "lightest",
-        "light"
-      ]
-    }
-  ]
+  "icons": []
 }
